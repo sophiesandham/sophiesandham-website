@@ -37,6 +37,34 @@
       padding: 72px 64px 80px;
     }
 
+    /* ─── Animations ─── */
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * {
+      animation: heroFade 0.7s ease both;
+    }
+    .hero .discipline-label { animation-delay: 0.05s; }
+    .hero .profile-photo    { animation-delay: 0.15s; }
+    .hero h1                { animation-delay: 0.25s; }
+    .hero .tagline          { animation-delay: 0.38s; }
+    .hero .location         { animation-delay: 0.48s; }
+    .hero .icon-list        { animation-delay: 0.56s; }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.from-left  { transform: translateX(-18px); }
+    .reveal.from-right { transform: translateX(18px); }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     /* ─── Hero section (full viewport height) ─── */
     .hero {
       min-height: calc(100vh - 72px);
@@ -532,28 +560,28 @@
     </section>
 
     <!-- Services -->
-    <h2 class="section-heading">My Work</h2>
+    <h2 class="section-heading reveal from-left">My Work</h2>
 
     <div class="work-stats">
-      <p class="work-stat">10+ Years in Impact Entrepreneurship</p>
-      <p class="work-stat">17+ Years in Events Production</p>
-      <p class="work-stat">7+ Years in Not-for-Profit</p>
+      <p class="work-stat reveal from-left" style="transition-delay:0.08s">10+ Years in Impact Entrepreneurship</p>
+      <p class="work-stat reveal from-left" style="transition-delay:0.18s">17+ Years in Events Production</p>
+      <p class="work-stat reveal from-left" style="transition-delay:0.28s">7+ Years in Not-for-Profit</p>
     </div>
 
     <ul class="services-list">
-      <li class="service-item">
+      <li class="service-item reveal from-left">
         <p class="service-title">01 | Experience Design</p>
         <p class="service-desc">Designing impactful human experiences across physical and digital spaces — from large-scale events and intimate gatherings to websites, onboarding and user experience journeys.</p>
       </li>
-      <li class="service-item">
+      <li class="service-item reveal from-right">
         <p class="service-title">02 | Event Production</p>
         <p class="service-desc">From conferences and multi-day leadership programmes to intimate dinners, networking sessions and online workshops. I design and produce experiences that focus on authentic human connection to gain measurable value, with thoughtful attention to detail throughout.</p>
       </li>
-      <li class="service-item">
+      <li class="service-item reveal from-left">
         <p class="service-title">03 | Facilitation</p>
         <p class="service-desc">Creating containers for hearts and minds to open for deep connection, bold thinking and effective collaboration. From leadership workshops to deep dive conversations on professional or personal topics to curated dinners and fireside chats.</p>
       </li>
-      <li class="service-item">
+      <li class="service-item reveal from-right">
         <p class="service-title">04 | Community Building</p>
         <p class="service-desc">Designing strategies, systems and tools to build scalable communities that feel authentic and inspiring and deliver measurable value.</p>
       </li>
@@ -801,5 +829,19 @@
     </footer>
 
   </div>
+  <script>
+    (function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+  </script>
 </body>
 </html>
