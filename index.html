@@ -17,12 +17,13 @@
 
     html {
       font-size: 18px;
+      overflow-x: hidden;
     }
 
     body {
       min-height: 100vh;
-      /* Diagonal gradient: warm copper bottom-left → rich mauve → vivid periwinkle top-right */
-      background: linear-gradient(to top right, #C4621E 0%, #A04585 45%, #4D5BC8 100%);
+      overflow-x: hidden;
+      background: linear-gradient(to top right, #C4621E 0%, #4D5BC8 100%);
       background-attachment: fixed;
       color: rgba(255, 255, 255, 0.9);
       font-family: 'Archivo', sans-serif;
@@ -38,20 +39,21 @@
     }
 
     /* ─── Animations ─── */
-    @keyframes heroFade {
+    @keyframes heroFadeLeft {
       from { opacity: 0; transform: translateX(-18px); }
       to   { opacity: 1; transform: translateX(0); }
     }
-
-    .hero > * {
-      animation: heroFade 0.7s ease both;
+    @keyframes heroFadeRight {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
-    .hero .discipline-label { animation-delay: 0.05s; }
-    .hero .profile-photo    { animation-delay: 0.15s; }
-    .hero h1                { animation-delay: 0.25s; }
-    .hero .tagline          { animation-delay: 0.38s; }
-    .hero .location         { animation-delay: 0.48s; }
-    .hero .icon-list        { animation-delay: 0.56s; }
+
+    .hero .discipline-label { animation: heroFadeLeft  0.7s ease both; animation-delay: 0.05s; }
+    .hero .profile-photo    { animation: heroFadeRight 0.7s ease both; animation-delay: 0.15s; }
+    .hero h1                { animation: heroFadeLeft  0.7s ease both; animation-delay: 0.25s; }
+    .hero .tagline          { animation: heroFadeRight 0.7s ease both; animation-delay: 0.38s; }
+    .hero .location         { animation: heroFadeLeft  0.7s ease both; animation-delay: 0.48s; }
+    .hero .icon-list        { animation: heroFadeRight 0.7s ease both; animation-delay: 0.56s; }
 
     /* Scroll reveal */
     .reveal {
@@ -564,7 +566,7 @@
 
     <div class="work-stats">
       <p class="work-stat reveal from-left" style="transition-delay:0.08s">10+ Years in Impact Entrepreneurship</p>
-      <p class="work-stat reveal from-left" style="transition-delay:0.18s">17+ Years in Events Production</p>
+      <p class="work-stat reveal from-left" style="transition-delay:0.18s">17+ Years in Event Production</p>
       <p class="work-stat reveal from-left" style="transition-delay:0.28s">7+ Years in Not-for-Profit</p>
     </div>
 
