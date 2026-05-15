@@ -215,9 +215,6 @@
       animation: marquee-scroll 30s linear infinite;
     }
 
-    .marquee-track:hover {
-      animation-play-state: paused;
-    }
 
     @keyframes marquee-scroll {
       0%   { transform: translateX(0); }
@@ -413,9 +410,6 @@
       animation: testimonials-scroll 108s linear infinite;
     }
 
-    .testimonials-track:hover {
-      animation-play-state: paused;
-    }
 
     @keyframes testimonials-scroll {
       0%   { transform: translateX(0); }
@@ -524,6 +518,7 @@
         word-break: break-all;
       }
 
+
       .gallery-list {
         grid-template-columns: 1fr;
       }
@@ -540,7 +535,7 @@
     <section class="hero">
 
       <!-- Top discipline label -->
-      <p class="discipline-label">Experience Design &bull; Facilitation &bull; Community</p>
+      <p class="discipline-label"><span class="term">Experience Design</span> <span class="sep">&bull;</span> <span class="term">Facilitation</span> <span class="sep">&bull;</span> <span class="term">Community Architect</span></p>
 
       <!-- Circular profile photo -->
       <div class="profile-photo">
@@ -843,6 +838,40 @@
     </footer>
 
   </div>
+  <script>
+    (function () {
+      function updateSeps() {
+        const terms = document.querySelectorAll('.discipline-label .term');
+        const seps  = document.querySelectorAll('.discipline-label .sep');
+        seps.forEach((sep, i) => {
+          const a = terms[i].getBoundingClientRect().top;
+          const b = terms[i + 1] ? terms[i + 1].getBoundingClientRect().top : a + 100;
+          sep.style.display = Math.abs(a - b) < 2 ? 'inline' : 'none';
+        });
+      }
+      document.fonts.ready.then(() => {
+        updateSeps();
+        window.addEventListener('resize', updateSeps);
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      ['.marquee-track', '.testimonials-track'].forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (!el) return;
+        function pause() { el.style.animationPlayState = 'paused'; }
+        function resume() { el.style.animationPlayState = 'running'; }
+        el.addEventListener('mouseenter', pause);
+        el.addEventListener('mouseleave', resume);
+        el.addEventListener('touchstart', pause, { passive: true });
+        el.addEventListener('touchend', resume);
+        el.addEventListener('touchcancel', resume);
+      });
+    })();
+  </script>
+
   <script>
     (function () {
       const observer = new IntersectionObserver((entries) => {
