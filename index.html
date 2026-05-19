@@ -303,7 +303,7 @@
       font-family: 'Aboreto', sans-serif;
       font-weight: 400;
       font-size: 3.6rem;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.82);
       margin-bottom: 40px;
@@ -353,6 +353,53 @@
       font-weight: 400;
       color: rgba(255, 255, 255, 0.88);
       line-height: 1.78;
+    }
+
+    /* ─── Who I Work With ─── */
+    .who-section {
+      margin: 72px 0 64px;
+    }
+
+    .who-body {
+      font-family: 'Archivo', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.85;
+      max-width: 740px;
+      margin-bottom: 36px;
+    }
+
+    .who-often {
+      font-family: 'Archivo', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 18px;
+    }
+
+    .who-list {
+      list-style: none;
+    }
+
+    .who-list li {
+      font-family: 'Archivo', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.7;
+      padding: 4px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .who-list li::before {
+      content: '•';
+      color: rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
     }
 
     /* ─── Gallery (2 × 2 grid) ─── */
@@ -503,6 +550,11 @@
         letter-spacing: 0.08em;
       }
 
+      .discipline-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+      }
+
       .tagline {
         font-size: 1rem;
         letter-spacing: 0.1em;
@@ -599,6 +651,21 @@
         <p class="service-desc">Wellbeing workshops for personal reflection and accountable action. 500-hour certified Ashtanga-Vinyasa yoga teacher and meditation guide available for retreats, private or group classes.</p>
       </li>
     </ul>
+
+    <!-- Who I Work With -->
+    <section class="who-section">
+      <h2 class="section-heading reveal from-left">Who I Work With</h2>
+      <p class="who-body reveal from-left" style="transition-delay:0.08s">I work with startups and growth-stage companies, leadership teams, communities and organisations designing experiences that bring people together in meaningful ways, in-person and online. From facilitation and production to ongoing engagement strategy, I design and lead end-to-end experiences that feel seamless, deeply human, and that last long beyond the event itself.</p>
+      <p class="who-often reveal from-left" style="transition-delay:0.15s">Often including</p>
+      <ul class="who-list">
+        <li class="reveal from-left" style="transition-delay:0.20s">Leadership retreats, team off-sites, multi-day programmes</li>
+        <li class="reveal from-left" style="transition-delay:0.25s">Immersive events and conferences</li>
+        <li class="reveal from-left" style="transition-delay:0.30s">Workshops on topics of business and personal growth</li>
+        <li class="reveal from-left" style="transition-delay:0.35s">Community and member experience design</li>
+        <li class="reveal from-left" style="transition-delay:0.40s">Online-to-in-person journey design</li>
+        <li class="reveal from-left" style="transition-delay:0.45s">Culture and connection strategy for teams and communities</li>
+      </ul>
+    </section>
 
     <!-- Gallery (2 × 2) -->
     <ul class="gallery-list">
